@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun setAlarmManager(calendar: Calendar) {
-        val am = getSystemService(Context.ALARM_SERVICE)
+        val am = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmBroadcastReceiver::class.java)
         val pending = PendingIntent.getBroadcast(this, 0, intent, 0)
         when {
@@ -48,3 +48,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
