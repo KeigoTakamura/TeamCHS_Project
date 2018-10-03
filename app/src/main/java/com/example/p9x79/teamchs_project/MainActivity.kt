@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
             calendar.add(Calendar.SECOND, 5)
             setAlarmManager(calendar)
         }
+
+
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -46,6 +48,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+    private  fun cancecelAlarmManager(){
+        val am =getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        
     }
 }
 
