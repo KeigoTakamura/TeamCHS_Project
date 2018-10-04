@@ -1,11 +1,14 @@
 package com.example.p9x79.teamchs_project
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
+import android.location.OnNmeaMessageListener
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import org.jetbrains.anko.toast
+import java.time.Month
 import java.util.*
 
 class SimpleAlertDialog : DialogFragment() {
@@ -39,4 +42,28 @@ class SimpleAlertDialog : DialogFragment() {
         }
         return builder.create()
     }
+}
+
+class DatePickerFragment : DialogFragment(),
+            DatePickerDialog.OnDateSetListener{
+
+    interface   onDataSelectedListener {
+        fun onSelected(year: Int, month: Int,date:Int)
+    }
+    private  lateinit var  listener: DatePickerDialog.OnDateSetListener
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if(context is DatePickerDialog.OnDateSetListener){
+            listener = context
+        }
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?) :Dialog{
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar,)
+        return DatePickerDialog(context, this,year,month,date)
+    }
+
+
 }
