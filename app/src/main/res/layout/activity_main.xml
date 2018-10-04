@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/timetext" />
 
     <Button
-        android:id="@+id/CancelAram"
+        android:id="@+id/cancelAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="アラームをキャンセルする"
