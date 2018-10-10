@@ -10,8 +10,10 @@ import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.widget.DatePicker
+import android.widget.TimePicker
 import org.jetbrains.anko.toast
 import java.time.Month
+import java.time.MonthDay
 import java.util.*
 
 class SimpleAlertDialog : DialogFragment() {
@@ -76,9 +78,33 @@ class DatePickerFragment : DialogFragment(),
 
 }
 
-/*
-class  TimePickerFragment  : DialogFragment(),
-            TimePickerDialog.OnTimeSetListener{
+
+class  TimePickerFragment : DialogFragment(),
+        TimePickerDialog.OnTimeSetListener{
+            interface  OntimeSelectedListener{
+                fun onSelected(hourodDay: Int,minute:Int)
+            }
+        private  lateinit var  listener: TimePickerDialog.OnTimeSetListener
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if(context is TimePickerFragment.OntimeSelectedListener){
+            listener = context
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR_OF_DAY)
+        val minute= c.get(Calendar.MINUTE)
+
+        return  TimePickerDialog(context,this,hour,minute,true)
+    }
+
+    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+        listener.onSelected(hourOfDay,minute)
+    }
 
 }
-        */
