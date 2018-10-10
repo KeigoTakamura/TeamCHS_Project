@@ -3,6 +3,7 @@ package com.example.p9x79.teamchs_project
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.location.OnNmeaMessageListener
 import android.os.Bundle
@@ -52,10 +53,10 @@ class DatePickerFragment : DialogFragment(),
     interface   onDataSelectedListener {
         fun onSelected(year: Int, month: Int,date:Int)
     }
-    private  lateinit var  listener: DatePickerDialog.OnDateSetListener
+    private  lateinit var  listener: onDataSelectedListener
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if(context is DatePickerDialog.OnDateSetListener){
+        if(context is  onDataSelectedListener){
             listener = context
         }
     }
@@ -70,7 +71,14 @@ class DatePickerFragment : DialogFragment(),
 
     override fun onDateSet(view: DatePicker, year:
             Int,month: Int, date: Int) {
-        
+        listener.onSelected(year, month, date)
     }
 
 }
+
+/*
+class  TimePickerFragment  : DialogFragment(),
+            TimePickerDialog.OnTimeSetListener{
+
+}
+        */
