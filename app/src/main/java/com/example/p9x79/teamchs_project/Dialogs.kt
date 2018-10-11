@@ -18,16 +18,16 @@ import java.util.*
 
 class SimpleAlertDialog : DialogFragment() {
 
-    interface OnClickLIstener{
+    interface OnClickListener{
         fun onPositiveClick()
         fun onNegativeClick()
     }
 
-    private lateinit var listener: OnClickLIstener
+    private lateinit var listener: OnClickListener
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if (context is SimpleAlertDialog.OnClickLIstener){
+        if (context is SimpleAlertDialog.OnClickListener){
             listener = context
         }
     }
@@ -52,13 +52,13 @@ class SimpleAlertDialog : DialogFragment() {
 class DatePickerFragment : DialogFragment(),
             DatePickerDialog.OnDateSetListener{
 
-    interface   onDataSelectedListener {
+    interface   OnDataSelectedListener {
         fun onSelected(year: Int, month: Int,date:Int)
     }
-    private  lateinit var  listener: onDataSelectedListener
+    private  lateinit var  listener: OnDataSelectedListener
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if(context is  onDataSelectedListener){
+        if(context is  OnDataSelectedListener){
             listener = context
         }
     }
@@ -81,21 +81,19 @@ class DatePickerFragment : DialogFragment(),
 
 class  TimePickerFragment : DialogFragment(),
         TimePickerDialog.OnTimeSetListener{
-            interface  OntimeSelectedListener{
-                fun onSelected(hourodDay: Int,minute:Int)
+            interface  OnTimeSelectedListener{
+                fun onSelected(hourOfDay: Int,minute:Int)
             }
-        private  lateinit var  listener: TimePickerDialog.OnTimeSetListener
+        private  lateinit var  listener: OnTimeSelectedListener
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if(context is TimePickerFragment.OntimeSelectedListener){
+        if (context is TimePickerFragment.OnTimeSelectedListener){
             listener = context
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val c = Calendar.getInstance()
         val hour = c.get(Calendar.HOUR_OF_DAY)
         val minute= c.get(Calendar.MINUTE)
@@ -103,8 +101,8 @@ class  TimePickerFragment : DialogFragment(),
         return  TimePickerDialog(context,this,hour,minute,true)
     }
 
-    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
-        listener.onSelected(hourOfDay,minute)
+    override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
+        listener.onSelected(hourOfDay, minute)
     }
 
 }
