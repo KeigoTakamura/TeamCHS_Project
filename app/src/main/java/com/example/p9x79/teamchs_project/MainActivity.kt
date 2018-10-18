@@ -46,9 +46,10 @@ class MainActivity : AppCompatActivity()
         finish()
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+    /*
         if(intent?.getBooleanExtra("onReceive", false) == true){
             when {
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ->
@@ -61,7 +62,11 @@ class MainActivity : AppCompatActivity()
             val dialog = SimpleAlertDialog()
             dialog.show(supportFragmentManager, "alert_dialog")
         }
+        */
+
+
         setContentView(R.layout.activity_main)
+
 
         setAlarm.setOnClickListener {
             val date = "${dateText.text} ${timeText.text}".toDate()
