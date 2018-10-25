@@ -9,10 +9,16 @@ import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import android.view.WindowManager.LayoutParams
 import android.view.WindowManager.LayoutParams.*
+import android.widget.TextView
+import com.kwabenaberko.openweathermaplib.Lang
+import com.kwabenaberko.openweathermaplib.Units
+import com.kwabenaberko.openweathermaplib.implementation.OpenWeatherMapHelper
+import com.kwabenaberko.openweathermaplib.models.currentweather.CurrentWeather
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import java.lang.IllegalArgumentException
@@ -24,6 +30,8 @@ class MainActivity : AppCompatActivity()
         , SimpleAlertDialog.OnClickListener
         , DatePickerFragment.OnDataSelectedListener
         , TimePickerFragment.OnTimeSelectedListener{
+
+    var test_data = ""
 
     override fun onSelected(year: Int, month: Int, date: Int) {
         val c = Calendar.getInstance()
@@ -50,8 +58,31 @@ class MainActivity : AppCompatActivity()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        val helper = OpenWeatherMapHelper()
+        helper.setApiKey("5e6b7a32304944d415210fb613d55478")
+        helper.setUnits(Units.IMPERIAL)
+        helper.setLang(Lang.ENGLISH)
+        val textSetting = findViewById<TextView>(R.id.textSetting)
+        helper.getCurrentWeatherByCityName("Tokyo", object : OpenWeatherMapHelper.CurrentWeatherCallback {
 
-        if(intent?.getBooleanExtra("onReceive", false) == true){
+            override fun onSuccess(currentWeather: CurrentWeather) {
+                var test = ("Coordinates: " + currentWeather.coord.lat + ", " + currentWeather.coord.lon + "\n"
+                        + "Weather Description: " + currentWeather.weatherArray[0].description + "\n"
+                        + "Max Temperature: " + currentWeather.main.tempMax + "\n"
+                        + "Wind Speed: " + currentWeather.wind.speed + "\n"
+                        + "City, Country: " + currentWeather.name + ", " + currentWeather.sys.country)
+                Log.v("Test_1", test)
+                test_data = test
+                textSetting.text = test_data
+            }
+
+            override fun onFailure(throwable: Throwable) {
+                Log.v("Test_1", throwable.message)
+            }
+        })
+
+        if (intent?.getBooleanExtra("onReceive", false) == true) {
             when {
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ->
                     window.addFlags(FLAG_TURN_SCREEN_ON or
@@ -63,8 +94,6 @@ class MainActivity : AppCompatActivity()
             val dialog = SimpleAlertDialog()
             dialog.show(supportFragmentManager, "alert_dialog")
         }
-
-
 
         setContentView(R.layout.activity_main)
 
