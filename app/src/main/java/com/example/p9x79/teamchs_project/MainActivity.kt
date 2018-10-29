@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val helper = OpenWeatherMapHelper()
-        helper.setApiKey("5e6b7a32304944d415210fb613d55478")
+
         helper.setUnits(Units.IMPERIAL)
         helper.setLang(Lang.ENGLISH)
         val textSetting = findViewById<TextView>(R.id.textSetting)
@@ -96,7 +96,6 @@ class MainActivity : AppCompatActivity()
         }
 
         setContentView(R.layout.activity_main)
-
 
         setAlarm.setOnClickListener {
             val date = "${dateText.text} ${timeText.text}".toDate()
