@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val helper = OpenWeatherMapHelper()
-
+        helper.setApiKey("")
         helper.setUnits(Units.IMPERIAL)
         helper.setLang(Lang.ENGLISH)
         val textSetting = findViewById<TextView>(R.id.textSetting)
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity()
             }
         })
 
-        if (intent?.getBooleanExtra("onReceive", false) == true) {
+                if (intent?.getBooleanExtra("onReceive", false) == true) {
             when {
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ->
                     window.addFlags(FLAG_TURN_SCREEN_ON or
@@ -94,8 +94,8 @@ class MainActivity : AppCompatActivity()
             val dialog = SimpleAlertDialog()
             dialog.show(supportFragmentManager, "alert_dialog")
         }
-
         setContentView(R.layout.activity_main)
+
 
         setAlarm.setOnClickListener {
             val date = "${dateText.text} ${timeText.text}".toDate()
