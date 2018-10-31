@@ -59,30 +59,9 @@ class MainActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val helper = OpenWeatherMapHelper()
-        helper.setApiKey("")
-        helper.setUnits(Units.IMPERIAL)
-        helper.setLang(Lang.ENGLISH)
-        val textSetting = findViewById<TextView>(R.id.textSetting)
-        helper.getCurrentWeatherByCityName("Tokyo", object : OpenWeatherMapHelper.CurrentWeatherCallback {
 
-            override fun onSuccess(currentWeather: CurrentWeather) {
-                var test = ("Coordinates: " + currentWeather.coord.lat + ", " + currentWeather.coord.lon + "\n"
-                        + "Weather Description: " + currentWeather.weatherArray[0].description + "\n"
-                        + "Max Temperature: " + currentWeather.main.tempMax + "\n"
-                        + "Wind Speed: " + currentWeather.wind.speed + "\n"
-                        + "City, Country: " + currentWeather.name + ", " + currentWeather.sys.country)
-                Log.v("Test_1", test)
-                test_data = test
-                textSetting.text = test_data
-            }
 
-            override fun onFailure(throwable: Throwable) {
-                Log.v("Test_1", throwable.message)
-            }
-        })
-
-                if (intent?.getBooleanExtra("onReceive", false) == true) {
+        if (intent?.getBooleanExtra("onReceive", false) == true) {
             when {
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ->
                     window.addFlags(FLAG_TURN_SCREEN_ON or
@@ -125,6 +104,29 @@ class MainActivity : AppCompatActivity()
             val dialog = TimePickerFragment()
             dialog.show(supportFragmentManager, "time_dialog")
         }
+
+        val helper = OpenWeatherMapHelper()
+        helper.setApiKey("5e6b7a32304944d415210fb613d55478")
+        helper.setUnits(Units.IMPERIAL)
+        helper.setLang(Lang.ENGLISH)
+        val textSetting = findViewById<TextView>(R.id.textSetting)
+        helper.getCurrentWeatherByCityName("Tokyo", object : OpenWeatherMapHelper.CurrentWeatherCallback {
+
+            override fun onSuccess(currentWeather: CurrentWeather) {
+                var test = ("Coordinates: " + currentWeather.coord.lat + ", " + currentWeather.coord.lon + "\n"
+                        + "Weather Description: " + currentWeather.weatherArray[0].description + "\n"
+                        + "Max Temperature: " + currentWeather.main.tempMax + "\n"
+                        + "Wind Speed: " + currentWeather.wind.speed + "\n"
+                        + "City, Country: " + currentWeather.name + ", " + currentWeather.sys.country)
+                Log.v("Test_1", test)
+                test_data = test
+                textSetting.text = test_data
+            }
+
+            override fun onFailure(throwable: Throwable) {
+                Log.v("Test_1", throwable.message)
+            }
+        })
 
     }
 
