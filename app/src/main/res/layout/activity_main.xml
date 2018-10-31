@@ -8,6 +8,17 @@
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
+        android:id="@+id/textSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:text="Hello"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancelAlarm"
+        app:layout_constraintVertical_bias="0.64" />
+
+    <TextView
         android:id="@+id/dateText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -48,26 +59,11 @@
     <Button
         android:id="@+id/cancelAlarm"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="68dp"
         android:text="アラームをキャンセルする"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setAlarm" />
-
-    <TextView
-        android:id="@+id/textSetting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cancelAlarm" />
 
 </android.support.constraint.ConstraintLayout>
