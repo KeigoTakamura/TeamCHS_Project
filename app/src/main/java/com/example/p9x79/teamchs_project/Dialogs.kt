@@ -6,7 +6,10 @@ import android.app.Dialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.location.OnNmeaMessageListener
+import android.media.AsyncPlayer
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.widget.DatePicker
@@ -17,6 +20,7 @@ import java.time.MonthDay
 import java.util.*
 
 class SimpleAlertDialog : DialogFragment() {
+    private  lateinit var player: MediaPlayer
 
     interface OnClickListener{
         fun onPositiveClick()
