@@ -37,11 +37,12 @@ class SimpleAlertDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = context
+        player = MediaPlayer.create(this,R.raw.todo)
+
         if (context == null)
             return super.onCreateDialog(savedInstanceState)
         val builder = AlertDialog.Builder(context).apply{
-            player = MediaPlayer.create(this , R.raw.todo)
-            //player.start()
+
             setMessage("時間になりました！　")
             setPositiveButton("起きる"){ dialog, which ->
                 listener.onPositiveClick()
