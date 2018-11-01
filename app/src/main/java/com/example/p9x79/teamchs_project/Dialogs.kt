@@ -20,14 +20,13 @@ import java.time.MonthDay
 import java.util.*
 
 class SimpleAlertDialog : DialogFragment() {
-    private  lateinit var player: MediaPlayer
+    public  lateinit var player: MediaPlayer
 
     interface OnClickListener{
         fun onPositiveClick()
         fun onNegativeClick()
     }
-
-    private lateinit var listener: OnClickListener
+    lateinit var listener: OnClickListener
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -41,6 +40,8 @@ class SimpleAlertDialog : DialogFragment() {
         if (context == null)
             return super.onCreateDialog(savedInstanceState)
         val builder = AlertDialog.Builder(context).apply{
+            player = MediaPlayer.create(this , R.raw.todo)
+            //player.start()
             setMessage("時間になりました！　")
             setPositiveButton("起きる"){ dialog, which ->
                 listener.onPositiveClick()
