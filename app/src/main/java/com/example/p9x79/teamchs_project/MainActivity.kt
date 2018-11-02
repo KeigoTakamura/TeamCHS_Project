@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity()
 
         cancelAlarm.setOnClickListener {
             cancelAlarmManager()
+            toast("アラームをキャンセルしました")
         }
 
         dateText.setOnClickListener {
