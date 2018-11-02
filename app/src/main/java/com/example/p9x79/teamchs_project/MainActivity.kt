@@ -113,8 +113,8 @@ class MainActivity : AppCompatActivity()
         helper.getCurrentWeatherByCityName("Tokyo", object : OpenWeatherMapHelper.CurrentWeatherCallback {
 
             override fun onSuccess(currentWeather: CurrentWeather) {
-                var test = ("Coordinates: " + currentWeather.coord.lat + ", " + currentWeather.coord.lon + "\n"
-                        + "Weather Description: " + currentWeather.weatherArray[0].description + "\n"
+                var test = (//"Coordinates: " + currentWeather.coord.lat + ", " + currentWeather.coord.lon + "\n"
+                        /*+*/ "Weather Description: " + currentWeather.weatherArray[0].description + "\n"
                         + "Max Temperature: " + currentWeather.main.tempMax + "\n"
                         + "Wind Speed: " + currentWeather.wind.speed + "\n"
                         + "City, Country: " + currentWeather.name + ", " + currentWeather.sys.country)
