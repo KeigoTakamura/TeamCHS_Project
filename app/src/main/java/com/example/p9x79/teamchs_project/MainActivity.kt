@@ -108,17 +108,17 @@ class MainActivity : AppCompatActivity()
 
         val helper = OpenWeatherMapHelper()
         helper.setApiKey("5e6b7a32304944d415210fb613d55478")
-        helper.setUnits(Units.IMPERIAL)
-        helper.setLang(Lang.ENGLISH)
+        helper.setUnits(Units.METRIC)
+        helper.setLang(Lang.JAPANESE)
         val textSetting = findViewById<TextView>(R.id.textSetting)
         helper.getCurrentWeatherByCityName("Tokyo", object : OpenWeatherMapHelper.CurrentWeatherCallback {
 
             override fun onSuccess(currentWeather: CurrentWeather) {
                 var test = (//"Coordinates: " + currentWeather.coord.lat + ", " + currentWeather.coord.lon + "\n"
-                        /*+*/ "Weather Description: " + currentWeather.weatherArray[0].description + "\n"
-                        + "Max Temperature: " + currentWeather.main.tempMax + "\n"
-                        + "Wind Speed: " + currentWeather.wind.speed + "\n"
-                        + "City, Country: " + currentWeather.name + ", " + currentWeather.sys.country)
+                        /*+*/ "天候: " + currentWeather.weatherArray[0].description + "\n"
+                        + "最高気温: " + currentWeather.main.tempMax + " [℃]\n"
+                        + "風速: " + currentWeather.wind.speed + " [m/s]\n"
+                        + "地域: " + currentWeather.name + ", " + currentWeather.sys.country)
                 Log.v("Test_1", test)
                 test_data = test
                 textSetting.text = test_data
