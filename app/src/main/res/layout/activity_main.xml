@@ -15,10 +15,10 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/mig" />
 
     <TextView
@@ -46,14 +46,14 @@
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="120dp"
         android:background="@color/textbackgroud2"
         android:gravity="center"
         android:text="日付設定"
         android:textColor="@android:color/holo_red_light"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +61,7 @@
         android:id="@+id/timeText"
         android:layout_width="308dp"
         android:layout_height="44dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         android:background="@color/textbackgroud2"
         android:gravity="center_horizontal"
         android:text="時刻設定"
@@ -75,7 +75,7 @@
         android:id="@+id/setAlarm"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="24dp"
         android:text="アラームをセットする"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,10 +85,36 @@
         android:id="@+id/cancelAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="8dp"
         android:text="アラームをキャンセルする"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setAlarm" />
+
+    [xml]
+
+    <LinearLayout
+        android:id="@+id/test"
+        android:layout_width="448dp"
+        android:layout_height="49dp">
+
+        <TextView
+            android:id="@+id/artist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:duplicateParentState="true"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="現在　路線情報で特に情報はありません"
+            android:textColor="@android:color/holo_red_dark" />;
+
+    </LinearLayout>;
+
+    [/xml]
 
 </android.support.constraint.ConstraintLayout>
