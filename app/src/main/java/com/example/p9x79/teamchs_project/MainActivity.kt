@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity()
     var test_data = ""
 
     override fun onSelected(year: Int, month: Int, date: Int) {
-        val c = Calendar.getInstance()
+        val c = Calendar.getInstance(
+        )
         c.set(year, month, date)
         dateText.text = DateFormat.format("yyyy/MM/dd", c)
     }
