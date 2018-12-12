@@ -93,7 +93,7 @@
     <LinearLayout
         android:id="@+id/test"
         android:layout_width="448dp"
-        android:layout_height="69dp"
+        android:layout_height="68dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -115,7 +115,8 @@
 
         ;
 
-    </LinearLayout>;
+    </LinearLayout>
+    ;
 
     [/xml]
 
