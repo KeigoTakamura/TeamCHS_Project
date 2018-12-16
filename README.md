@@ -2,3 +2,8 @@
 This is CHSsAndroid Application!
 This project is the main development project of team CHS
 Let's developed in one month to the prospect November
+
+このアプリケーションはサレジオ工業高等専門学校情報科のTeamCHSが開発したアンドロイドの目覚まし時計アプリケーションです
+朝わざわざ外を見なくても都内の天気が表示される仕様になっており、また独自開発のハードウェアによって大音量と回転灯で叩き起こすのを前提に開発されました
+ハードウェアとの連携を特殊音声によって実現している為そのまま鳴らすと酷い矩形波が出力されます
+そのためそのままでのご使用はお控えください
