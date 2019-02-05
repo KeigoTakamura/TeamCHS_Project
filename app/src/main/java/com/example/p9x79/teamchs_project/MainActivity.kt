@@ -22,9 +22,15 @@ import com.kwabenaberko.openweathermaplib.models.currentweather.CurrentWeather
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 import java.lang.IllegalArgumentException
+import java.net.InetSocketAddress
+import java.net.ServerSocket
+import java.net.Socket
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.io.*
+import java.net.InetAddress
+
 
 class MainActivity : AppCompatActivity()
         , SimpleAlertDialog.OnClickListener
@@ -32,6 +38,9 @@ class MainActivity : AppCompatActivity()
         , TimePickerFragment.OnTimeSelectedListener{
 
     var test_data = ""
+    private  lateinit var  inputStream: InputStream
+    private  lateinit var  bufferedReader: BufferedReader
+    private  lateinit var  printWriter: PrintWriter
 
     override fun onSelected(year: Int, month: Int, date: Int) {
         val c = Calendar.getInstance()
@@ -177,5 +186,30 @@ class MainActivity : AppCompatActivity()
         }
         return date
     }
+
+
+    /*
+    fun mytarin(){
+
+        val serverSocket = ServerSocket();
+
+        serverSocket.reuseAddress = true
+        serverSocket.bind(InetSocketAddress("35.200.108.213",80 ))
+
+
+        val socket : Socket = serverSocket.accept()
+        printWriter = PrintWriter(BufferedWriter(OutputStreamWriter(socket.getOutputStream() )))
+        printWriter.println("1")
+        printWriter.flush()
+
+
+        bufferedReader.close()
+        printWriter.close()
+        inputStream.close()
+        serverSocket.close()
+
+
+    }
+    */
 }
 
