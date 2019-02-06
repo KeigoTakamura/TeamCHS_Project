@@ -29,6 +29,9 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.io.*
+import java.io.BufferedReader
+import java.io.PrintWriter
+
 import java.net.InetAddress
 
 
@@ -188,28 +191,9 @@ class MainActivity : AppCompatActivity()
     }
 
 
-    /*
-    fun mytarin(){
-
-        val serverSocket = ServerSocket();
-
-        serverSocket.reuseAddress = true
-        serverSocket.bind(InetSocketAddress("35.200.108.213",80 ))
 
 
-        val socket : Socket = serverSocket.accept()
-        printWriter = PrintWriter(BufferedWriter(OutputStreamWriter(socket.getOutputStream() )))
-        printWriter.println("1")
-        printWriter.flush()
 
 
-        bufferedReader.close()
-        printWriter.close()
-        inputStream.close()
-        serverSocket.close()
-
-
-    }
-    */
 }
 
