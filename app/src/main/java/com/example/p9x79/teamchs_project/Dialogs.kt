@@ -6,7 +6,10 @@ import android.app.Dialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.location.OnNmeaMessageListener
+import android.media.AsyncPlayer
+import android.media.MediaPlayer
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.widget.DatePicker
@@ -17,13 +20,13 @@ import java.time.MonthDay
 import java.util.*
 
 class SimpleAlertDialog : DialogFragment() {
+    private  lateinit var player: MediaPlayer
 
     interface OnClickListener{
         fun onPositiveClick()
         fun onNegativeClick()
     }
-
-    private lateinit var listener: OnClickListener
+    lateinit var listener: OnClickListener
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -34,15 +37,23 @@ class SimpleAlertDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val context = context
+
+
         if (context == null)
             return super.onCreateDialog(savedInstanceState)
         val builder = AlertDialog.Builder(context).apply{
+//            player = MediaPlayer.create(this, R.raw.todo)
+            player = MediaPlayer.create(context, R.raw.todo)
+            player.isLooping=true
+            player.start()
             setMessage("時間になりました！　")
             setPositiveButton("起きる"){ dialog, which ->
                 listener.onPositiveClick()
+                player.stop()
             }
             setNegativeButton("あと５分") { dialog, which ->
                 listener.onNegativeClick()
+                player.stop()
             }
         }
         return builder.create()
